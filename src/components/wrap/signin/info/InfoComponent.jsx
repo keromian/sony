@@ -6,14 +6,21 @@ export default function InfoComponent({membership}) {
     const [state, setState] = React.useState(membership);
 
     React.useEffect(()=>{
-        const info = $('#info');
-        const infoInput = $('#info input');
         const infoInputs = $('#info .inputs');
-        const infoSpans = $('#info .spans');
         infoInputs.on({
             click(){
                 infoInputs.removeClass('on');
                 $(this).addClass('on');
+            }
+        })
+
+        
+
+        $(document).on({            
+            click(e){
+                if(!$(e.target).closest(infoInputs).length){
+                    infoInputs.removeClass('on');
+                }
             }
         })
 
@@ -309,7 +316,7 @@ export default function InfoComponent({membership}) {
                                     </label>                                    
                                 </li>
                             </ul>
-                            <div className="btn-box">
+                            <div className={`btn-box${state.아이디!=='' && state.비밀번호!=='' && state.비밀번호확인!=='' && state.이름!=='' && state.생년월일!=='' && state.휴대폰!==''?' on':''}`}>
                                 <button>가입완료</button>
                             </div>                            
                         </form>
@@ -364,21 +371,9 @@ InfoComponent.defaultProps = {
 
         isNumber: true, //
         isNumOk: false,
-        
-
-
         SMS_Email_info:'',
         under_fourteen:'',
         under_fourteen_state: false,
-
-
-        부모님이름:'',
-        isParentNameError: false,
-        isParentNameMsg: '',
-
-        부모님이메일:'',
-        isParentEmailError: false,
-        isParentEmailMsg: '',
 
         confirmMsg: '',
         isConfirmModal: false,

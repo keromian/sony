@@ -128,10 +128,15 @@
 #agree .container .gap .content .agree-box form .btn-box button {
   width: 100%;
   border: 0;
-  background: #222;
+  background: #ddd;
   color: #fff;
   font-size: 18px;
   font-weight: 600;
   height: 64px;
   border-radius: 8px;
+  pointer-events: none;
+}
+#agree .container .gap .content .agree-box form .btn-box button.on {
+  pointer-events: auto;
+  background: #222;
 }

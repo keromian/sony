@@ -2,16 +2,15 @@ import React from 'react';
 import ServiceSection1 from './service/ServiceSection1';
 import ServiceSection2 from './service/ServiceSection2';
 import axios from 'axios';
+import ViewComponent from './service/notice/ViewComponent';
+import WriteComponent from './service/notice/WriteComponent';
 
 export default function ServiceComponent(props) {
 
-    const [data, setData] = React.useState(true);
+    const [data, setData] = React.useState('FAQ');
 
-    const onClickTrue =()=>{
-        setData(true);
-    }
-    const onClickFalse =()=>{
-        setData(false);
+    const onClickMenu =(value)=>{
+        setData(value);
     }
 
 
@@ -44,8 +43,11 @@ export default function ServiceComponent(props) {
     
     return (
         <main id='main'>
-            <ServiceSection1 onClickTrue={onClickTrue} onClickFalse={onClickFalse}/>
-            <ServiceSection2 FAQ={state.FAQ} data={data} Notice={state.Notice}/>
+            <ServiceSection1 data={data} onClickMenu={onClickMenu} />
+            {(data==='공지사항' || data==='FAQ') && <ServiceSection2 FAQ={state.FAQ} data={data} Notice={state.Notice} setData={setData}/>}
+            {data==='글보기' && <ViewComponent setData={setData}/>}
+            {data==='글작성' && <WriteComponent setData={setData}/>}
+            
         </main>
     );
 }

@@ -1,12 +1,12 @@
 import React from 'react';
 import './scss/ServiceSection2.scss'
 import $ from 'jquery';
+import { Link } from 'react-router-dom';
 
-export default function ServiceSection2({FAQ, data, Notice}) {
+export default function ServiceSection2({FAQ,  Notice, data, setData}) {
 
     const [sortOrder, setSortOrder] =React.useState('전체');
     const [sortData, setSortData] =React.useState(FAQ);
-    const [leng, setLeng]=React.useState(0);
     React.useEffect(()=>{
         const notice1=$('.notice1') ;
         let arr = [...FAQ];
@@ -37,7 +37,6 @@ export default function ServiceSection2({FAQ, data, Notice}) {
         }
 
         setSortData(arr);
-        setLeng(arr.length);
 
     },[FAQ, sortOrder])
 
@@ -48,7 +47,7 @@ export default function ServiceSection2({FAQ, data, Notice}) {
 
     React.useEffect(()=>{
         const navBtn=$('.nav button');
-        const notice1A=$('.notice1 a');
+        // const notice1A=$('.notice1 a');
 
         navBtn.on({
             click(){
@@ -56,16 +55,22 @@ export default function ServiceSection2({FAQ, data, Notice}) {
                 $(this).addClass('on');
             }
         })
-        notice1A.on({
-            click(e){
-                e.preventDefault();
-                $(this).toggleClass('on');
-            }
-        })
     })
 
 
+    const [faq, setFaq] = React.useState({})
+    const onClickFaq =(e, value)=>{
+        e.preventDefault();
+        setFaq((prevList)=>({
+            ...prevList,
+            [value]:!prevList[value]
+        }));
+
+    };
+
+
     const [list] = React.useState(5);  // 한화면에 보여질 목록개수
+    const [faqList, setFaqList] = React.useState(9);  // 한화면에 보여질 목록개수
     const [pageNumber, setPageNumber] = React.useState(1); // 페이지번호
     const [groupPage] = React.useState(3); // 페이지번호 그룹1(1(1~5) 그룹2(6!~10) 그룹3(11~15) 그룹4(16~20))
     const [cnt, setCnt] = React.useState(1); // 페이지번호 그룹 1
@@ -106,23 +111,23 @@ export default function ServiceSection2({FAQ, data, Notice}) {
         setPageNumber(startNum+1);
     },[endtNum, startNum]);
 
-    React.useEffect(()=>{
-        const expand=$('.expand') ;
-        const notice1=$('.notice1') ;
-        expand.on({
-            click(e){
-                $(this).toggleClass('on');
-                notice1.toggleClass('on');
-            }
-        })
-    },[sortData])
+    const onClickPlus=()=>{
+        setFaqList(sortData.length)
+    }
+    const onClickMinus=()=>{
+        setFaqList(9)
+    }
     
+    const onClickView=(e,value)=>{
+        e.preventDefault();
+        setData(value);
+    }
 
     return (
         <section id='serviceSection2'>
             <div className="container">
                 <div className="gap">
-                    { data?
+                    { data==='FAQ' &&
                     <>
                     <div className="title hide">FAQ</div>
                     <div className="content">
@@ -139,16 +144,16 @@ export default function ServiceSection2({FAQ, data, Notice}) {
                             <ul>
                                 {
                                     sortData.map((item, idx)=>{
-                                        
+                                        if( Math.ceil((idx+1)/faqList) === pageNumber ){
                                         return(
                                             <li key={idx}>
-                                                <a href='!#'>
+                                                <a href='!#' onClick={(e)=>onClickFaq(e,idx)} className={faq[idx]?'on':''}> 
                                                     <dl>
                                                         <dt>{item.nav}</dt>
                                                         <dd><em>Q.</em>{item.detail} <span><img src="./img/service/icon_down.png" alt="" /></span></dd>
                                                         <dd></dd>
                                                     </dl>
-                                                    <div className="inner">
+                                                    <div className='inner'>
                                                         <p>{item.inner1}</p>
                                                         <p>{item.inner2}</p>
                                                     </div>
@@ -156,7 +161,7 @@ export default function ServiceSection2({FAQ, data, Notice}) {
                                                 
                                             </li>
                                         )
-                                        
+                                        }
                                     
                                         
                                     })
@@ -164,18 +169,23 @@ export default function ServiceSection2({FAQ, data, Notice}) {
                                 
                             </ul>
                         </div>
-                        {
-                            leng>=9 &&
+                        
                         <div className="expand">
+                            {
+                                sortOrder==='전체' && 
+                                <>
+                                {faqList===9 && <button onClick={onClickPlus}  className='plus-btn'>펼치기 +</button>}
+                                {faqList===sortData.length && <button onClick={onClickMinus} className='minus-btn'>접기 -</button>}
+                                </>
+                            }
                             
-                            <button  className='plus-btn'>펼치기 +</button>
-                            <button className='minus-btn'>접기 -</button>
                             
                         </div>
-                        }
+                        
                     </div>
                     </>
-                    :
+                }
+                {data==='공지사항' && 
                     <>
                     <div className="title hide">공지사항</div>
                     <div className="content">                        
@@ -191,7 +201,7 @@ export default function ServiceSection2({FAQ, data, Notice}) {
                                 Notice.map((item,idx)=>{
                                     if( Math.ceil((idx+1)/list) === pageNumber ){
                                     return(
-                                        <a href="!#" key={idx}>
+                                        <a href='!#' onClick={(e)=>onClickView(e,'글보기')}  key={idx}>
                                             <dd>
                                                 <span>{item.번호}</span>
                                                 <span>{item.제목}</span>
@@ -227,10 +237,13 @@ export default function ServiceSection2({FAQ, data, Notice}) {
                                     {cnt < Math.ceil(Notice.length/list/groupPage) && <a href="!#" className="next-btn"  onClick={onClickNextGroup}>&gt;</a>}
                                 </div> 
                             </div> 
+                            <div className='write-btn'>
+                                <button onClick={()=>setData('글작성')}>글작성</button>
+                            </div>
                         </div>
                     </div>
                     </>
-                    }
+                } 
                 </div>
             </div>
         </section>

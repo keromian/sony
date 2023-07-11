@@ -46,8 +46,6 @@
 #serviceSection2 .container .gap .content .notice1 {
   width: 100%;
   max-width: 1000px;
-  height: 523px;
-  overflow: hidden;
   margin: 60px auto;
 }
 #serviceSection2 .container .gap .content .notice1.on {
@@ -124,15 +122,6 @@
   background: none;
   font-size: 17px;
   font-weight: 700;
-}
-#serviceSection2 .container .gap .content .expand .minus-btn {
-  display: none;
-}
-#serviceSection2 .container .gap .content .expand.on .plus-btn {
-  display: none;
-}
-#serviceSection2 .container .gap .content .expand.on .minus-btn {
-  display: inline-block;
 }
 #serviceSection2 .container .gap .content .notice2 {
   position: relative;

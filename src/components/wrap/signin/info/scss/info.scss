@@ -6,9 +6,31 @@
         margin: 0 auto;
         padding: 160px 0 ;
         .gap{
-            .title{}
+            .title{
+                text-align: center;
+                h1{
+                    font-size: 32px;
+                    color: #222;
+                    font-weight: 700;
+                    line-height: 1.5;
+                }
+                p{
+                    margin: 14px 0 0 0;
+                    color: #888;
+                    font-size: 16px;
+                    line-height: 1.5;
+                    letter-spacing: -1px;
+                    display: inline-flex;
+                    align-items: center;
+                    strong{
+                        color: #666;
+                        font-weight: 600;
+                    }
+                }
+            }
             .content{
                 width: 100%;
+                margin: 65px 0 0 0;
                 form{
                     width: 100%;
                     ul{
@@ -56,6 +78,7 @@
                                     background: #fff;
                                     border: 0;
                                     border-bottom: 1px solid #e1e1e1;                                    
+                                    
                                     
                                     &:focus{
                                         outline: 0;
@@ -116,12 +139,21 @@
                         button{
                             width: 100%;
                             border: 0;
-                            background: #222;
+                            background: #ccc;
                             color: #fff;
                             font-size: 18px;
                             font-weight: 600;
                             height: 64px;
                             border-radius: 8px;
+                            pointer-events: none;
+                        }
+                        &.on{
+                            button{
+                                cursor: pointer;
+                                pointer-events: auto;
+                                background-color: #222;
+                            }
+                            
                         }
                     }
                 }
