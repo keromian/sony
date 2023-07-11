@@ -3,6 +3,9 @@ import axios from 'axios';
 import './scss/noticeWrite.scss';
 
 export default function WriteComponent({setData}) {
+
+    
+
     const [state, setState] = React.useState({
         subject:'',
         content:''
@@ -39,11 +42,9 @@ export default function WriteComponent({setData}) {
         })
         .then((res)=>{
     
-    
             console.log( res );
             console.log( res.data );
-            setData('공지사항');
-        
+            window.location.pathname='/SERVICE';
 
         })
         .catch((err)=>{

@@ -3,7 +3,7 @@ import './scss/ServiceSection2.scss'
 import $ from 'jquery';
 import { Link } from 'react-router-dom';
 
-export default function ServiceSection2({FAQ,  Notice, data, setData}) {
+export default function ServiceSection2({FAQ,  notice, data, setData}) {
 
     const [sortOrder, setSortOrder] =React.useState('전체');
     const [sortData, setSortData] =React.useState(FAQ);
@@ -198,14 +198,14 @@ export default function ServiceSection2({FAQ,  Notice, data, setData}) {
                                     <span>조회수</span>
                                 </dt>
                                 {
-                                Notice.map((item,idx)=>{
+                                notice.map((item,idx)=>{
                                     if( Math.ceil((idx+1)/list) === pageNumber ){
                                     return(
                                         <a href='!#' onClick={(e)=>onClickView(e,'글보기')}  key={idx}>
                                             <dd>
                                                 <span>{item.번호}</span>
                                                 <span>{item.제목}</span>
-                                                <span>{item.등록일}</span>
+                                                <span>{item.작성일}</span>
                                                 <span>{item.조회수}</span>
                                             </dd>
                                         </a>
@@ -224,7 +224,7 @@ export default function ServiceSection2({FAQ,  Notice, data, setData}) {
                                 (()=>{
                                         let arr = [];  // 페이지번호와 a 태그 모두 저장된 배열변수
                                         for(let i=startNum; i<endtNum; i++){                                    
-                                            if(i<Math.ceil(Notice.length/list)){ // 100/6
+                                            if(i<Math.ceil(notice.length/list)){ // 100/6
                                                 arr = [...arr,  <a key={i} data-key={`num${i}`}  className={pageNumber===(i+1)?'on':null}  href="!#" onClick={(e)=>onClickPageNum(e, (i+1))}>{i+1}</a> ]
                                                 // arr.push( <a href="!#" onClick={(e)=>onClickPageNum(e, (i+1))}>{i+1}</a> );
                                             }
@@ -234,7 +234,7 @@ export default function ServiceSection2({FAQ,  Notice, data, setData}) {
                                 }                        
                                 </div>
                                 <div className="next-btn-box">
-                                    {cnt < Math.ceil(Notice.length/list/groupPage) && <a href="!#" className="next-btn"  onClick={onClickNextGroup}>&gt;</a>}
+                                    {cnt < Math.ceil(notice.length/list/groupPage) && <a href="!#" className="next-btn"  onClick={onClickNextGroup}>&gt;</a>}
                                 </div> 
                             </div> 
                             <div className='write-btn'>
