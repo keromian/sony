@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import './scss/noticeWrite.scss';
+import './scss/noticeUpdate.scss';
 
-export default function WriteComponent({setData}) {
+export default function UpdateComponent({setData}) {
     const [state, setState] = React.useState({
         subject:'',
         content:''
@@ -52,9 +52,9 @@ export default function WriteComponent({setData}) {
                  
     }
     return (
-        <div id='noticeWrite'>
+        <div id='noticeUpdate'>
             <div className='title'>
-                <h2>글 작성</h2>
+                <h2>글 수정</h2>
             </div>
             <form  onSubmit={onSubmitWrite}>
                 <ul>
@@ -87,7 +87,7 @@ export default function WriteComponent({setData}) {
                 </ul>
                 <div className="btn-box">
                     <button onClick={()=>setData('공지사항')}>취소</button>
-                    <button>등록</button>
+                    <button>수정</button>
                 </div>
             </form>
         </div>

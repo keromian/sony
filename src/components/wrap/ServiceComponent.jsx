@@ -4,6 +4,7 @@ import ServiceSection2 from './service/ServiceSection2';
 import axios from 'axios';
 import ViewComponent from './service/notice/ViewComponent';
 import WriteComponent from './service/notice/WriteComponent';
+import UpdateComponent from './service/notice/UpdateComponent';
 
 export default function ServiceComponent(props) {
 
@@ -47,7 +48,7 @@ export default function ServiceComponent(props) {
             {(data==='공지사항' || data==='FAQ') && <ServiceSection2 FAQ={state.FAQ} data={data} Notice={state.Notice} setData={setData}/>}
             {data==='글보기' && <ViewComponent setData={setData}/>}
             {data==='글작성' && <WriteComponent setData={setData}/>}
-            
+            {data==='수정' && <UpdateComponent setData={setData}/>}            
         </main>
     );
 }

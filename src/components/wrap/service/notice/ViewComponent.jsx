@@ -26,7 +26,13 @@ export default function ViewComponent({setData}) {
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed atque amet blanditiis dignissimos expedita maiores minima asperiores ullam, vel incidunt. Perferendis fuga, aliquam et tempore ullam architecto necessitatibus doloremque soluta!</p>
                         </div>
                         <div className="content-footer">
-                            <button onClick={()=>setData('공지사항')}>목록</button>
+                            <div className="left-btn btns">
+                                <button onClick={()=>setData('공지사항')}>목록</button>
+                            </div>
+                            <div className="right-btn btns">
+                                <button onClick={()=>setData('수정')}>수정</button>
+                                <button >삭제</button>
+                            </div>
                         </div>
                     </div>
                 </div>
