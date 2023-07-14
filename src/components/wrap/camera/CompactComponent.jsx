@@ -3,7 +3,7 @@ import CompactSection1Component from './compact/CompactSection1Component';
 import axios from 'axios';
 import CompactSection2Component from './compact/CompactSection2Component';
 
-export default function CompactComponent(props) {
+export default function CompactComponent({setViewProductDetail, dkey}) {
     const [state, setState] = React.useState({
         컴팩트: [],
         n:0
@@ -34,7 +34,7 @@ export default function CompactComponent(props) {
     return (
         <main id='compact'>
             <CompactSection1Component/>
-            <CompactSection2Component 컴팩트={state.컴팩트} n={state.n}/>
+            <CompactSection2Component 컴팩트={state.컴팩트} n={state.n} setViewProductDetail={setViewProductDetail} dkey={dkey}/>
         </main>
     );
 }

@@ -1,0 +1,180 @@
+#detailSection1 {
+  padding: 80px 0 0 0;
+  width: 100%;
+}
+#detailSection1 .container {
+  width: 100%;
+  min-width: 1903px;
+}
+#detailSection1 .container .gap {
+  width: 100%;
+}
+#detailSection1 .container .gap .content {
+  width: 100%;
+  display: flex;
+}
+#detailSection1 .container .gap .content .left {
+  width: 1110px;
+  height: calc(100vh - 80px);
+  background: #f4f7fa;
+  display: flex;
+  justify-content: center;
+}
+#detailSection1 .container .gap .content .left figure {
+  display: block;
+  width: 864px;
+  height: 864px;
+  transform: translateY(-50px);
+}
+#detailSection1 .container .gap .content .left figure img {
+  width: 100%;
+}
+#detailSection1 .container .gap .content .right {
+  width: 793px;
+  padding: 80px 120px 0 120px;
+  letter-spacing: -1px;
+}
+#detailSection1 .container .gap .content .right .row1 {
+  position: relative;
+}
+#detailSection1 .container .gap .content .right .row1 span {
+  color: #FF4E00;
+  font-size: 16px;
+  font-weight: 700;
+}
+#detailSection1 .container .gap .content .right .row1 h2 {
+  font-size: 40px;
+  font-weight: 700;
+  color: #000;
+}
+#detailSection1 .container .gap .content .right .row1 h4 {
+  font-size: 18px;
+  letter-spacing: -0.5px;
+  font-weight: 700;
+  color: #888;
+}
+#detailSection1 .container .gap .content .right .row1 p {
+  color: #5865f5;
+  font-size: 12px;
+  font-weight: 700;
+}
+#detailSection1 .container .gap .content .right .row1 a {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  color: #000;
+}
+#detailSection1 .container .gap .content .right .row2 {
+  margin: 45px 0 0 0;
+  position: relative;
+}
+#detailSection1 .container .gap .content .right .row2 h3 {
+  color: #bbb;
+  font-size: 28px;
+  font-weight: 700;
+}
+#detailSection1 .container .gap .content .right .row2 span {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  color: #5865f5;
+  font-size: 14px;
+  font-weight: 700;
+}
+#detailSection1 .container .gap .content .right .row3 {
+  margin: 24px 0 0 0;
+  padding: 21px 0 0 0;
+  border-top: 1px solid #ddd;
+}
+#detailSection1 .container .gap .content .right .row3 h3 {
+  color: #222;
+  font-size: 16px;
+  font-weight: 700;
+}
+#detailSection1 .container .gap .content .right .row4 {
+  margin: 24px 0 0 0;
+  padding: 21px 0 0 0;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+}
+#detailSection1 .container .gap .content .right .row4 h3 {
+  color: #222;
+  font-size: 16px;
+  font-weight: 700;
+}
+#detailSection1 .container .gap .content .right .row4 .radio-box {
+  display: flex;
+}
+#detailSection1 .container .gap .content .right .row4 .radio-box li span {
+  display: block;
+  font-size: 11px;
+  color: #222;
+}
+#detailSection1 .container .gap .content .right .row5 {
+  margin: 24px 0 0 0;
+  padding: 21px 0 0 0;
+  border-top: 1px solid #ddd;
+}
+#detailSection1 .container .gap .content .right .row5 h3 {
+  color: #222;
+  font-size: 16px;
+  font-weight: 700;
+}
+#detailSection1 .container .gap .content .right .row5 select {
+  margin: 15px 0 0 0;
+  width: 100%;
+  height: 50px;
+  padding: 13px 17px;
+}
+#detailSection1 .container .gap .content .right .row6 {
+  margin: 24px 0 0 0;
+  padding: 30px 0 0 0;
+  border-top: 2px solid #000;
+  display: flex;
+  justify-content: space-between;
+}
+#detailSection1 .container .gap .content .right .row6 h3 {
+  color: #222;
+  font-size: 16px;
+  font-weight: 700;
+}
+#detailSection1 .container .gap .content .right .row7 {
+  margin: 65px 0 0 0;
+}
+#detailSection1 .container .gap .content .right .row7 ul {
+  display: flex;
+}
+#detailSection1 .container .gap .content .right .row7 ul li {
+  margin: 0 8px 0 0;
+}
+#detailSection1 .container .gap .content .right .row7 ul li button {
+  width: 64px;
+  height: 64px;
+  background: none;
+  border-width: 1px;
+}
+#detailSection1 .container .gap .content .right .row7 ul li:nth-child(4) {
+  margin: 0;
+}
+#detailSection1 .container .gap .content .right .row7 ul li:nth-child(4) button {
+  width: 337px;
+  background: #ddd;
+  color: #fff;
+  border: 0;
+}
+
+#detailSection2 {
+  width: 100%;
+}
+#detailSection3 {
+  width: 100%;
+}
+#detailSection4 {
+  width: 100%;
+}
+#detailSection5 {
+  width: 100%;
+}

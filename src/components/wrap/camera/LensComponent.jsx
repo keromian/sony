@@ -4,7 +4,7 @@ import axios from 'axios';
 import LensSection2Component from './lens/LensSection2Component';
 
 
-export default function LensComponent(props) {
+export default function LensComponent({setViewProductDetail, dkey}) {
     const [state, setState] = React.useState({
         렌즈: [],
         n:0
@@ -32,7 +32,7 @@ export default function LensComponent(props) {
     return (
         <main id='lens'>
             <LensSection1Component/>
-            <LensSection2Component 렌즈={state.렌즈} n={state.n}/>
+            <LensSection2Component 렌즈={state.렌즈} n={state.n} setViewProductDetail={setViewProductDetail} dkey={dkey}/>
         </main>
     );
 }

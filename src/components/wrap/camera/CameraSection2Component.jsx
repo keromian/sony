@@ -1,7 +1,7 @@
 import React from 'react';
 import './scss/cameraSection2.scss';
 
-export default function CameraSection2Component({카메라, n}) {
+export default function CameraSection2Component({카메라, n, setViewProductDetail, dkey}) {
     const [sortOrder, setSortOrder] =React.useState('new');
     const [sortDate, setSortData] =React.useState(카메라);
 
@@ -23,6 +23,26 @@ export default function CameraSection2Component({카메라, n}) {
     const onClickSort=(order)=>{
         setSortOrder(order);
     }
+
+    const onClickProductDetailList=(e, item)=>{
+        e.preventDefault();
+
+        let obj = {
+            상품코드: item.product_code,
+            이미지: item.img,
+            제품명: item.product,
+            품절: item.soldout,
+            정보: item.info,
+            가격: item.price,
+            신제품: item.new
+        }
+   
+        console.log(item);
+        setViewProductDetail(obj);
+        window.location.pathname='/DETAIL';
+    }
+
+
     return (
         <section id='cameraSection2'>
             <div className="container">
@@ -44,8 +64,8 @@ export default function CameraSection2Component({카메라, n}) {
                             {
                                 sortDate.map((item,idx)=>{
                                     return(
-                                        <li key={idx}>
-                                            <a href="!#">
+                                        <li key={idx} dkey={idx}>
+                                            <a href="!#" onClick={(e)=>onClickProductDetailList(e,item)}>
                                                 <div className='img-box'>
                                                     <img src={item.img} alt="" />
                                                 </div>

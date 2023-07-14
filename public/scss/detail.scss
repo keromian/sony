@@ -1,0 +1,207 @@
+#detailSection1{
+    padding: 80px 0 0 0;
+    width: 100%;
+    .container{
+        width: 100%;
+        min-width: 1903px;
+        .gap{
+            width: 100%;
+            .content{
+                width: 100%;
+                display: flex;
+                .left{
+                    width: 1110px;
+                    height: calc(100vh - 80px) ;
+                    background: #f4f7fa;   
+                    display: flex;
+                    justify-content: center;
+                    figure{
+                        display: block;
+                        width: 864px;
+                        height: 864px;
+                        transform: translateY(-50px);
+                        img{
+                            width: 100%;
+                        }
+                    }
+                }
+                .right{
+                    width: 793px;
+                    padding: 80px 120px 0 120px;
+                    letter-spacing: -1px;
+                    
+                    .row1{
+                        position: relative;
+                        span{
+                            color: #FF4E00;
+                            font-size: 16px;
+                            font-weight: 700;
+                        }
+                        h2{
+                            font-size: 40px;
+                            font-weight: 700;                            
+                            color: #000;
+                        }
+                        h4{
+                            font-size: 18px;
+                            letter-spacing: -0.5px;
+                            font-weight: 700; 
+                            color: #888;
+                        }
+                        p{
+                            color: #5865f5;
+                            font-size: 12px;
+                            font-weight: 700; 
+                        }
+                        a{
+                            position: absolute;
+                            top: 50%;
+                            right: 0;
+                            transform: translateY(-50%);
+                            color: #000;
+                        }
+                    }
+                    .row2{
+                        margin: 45px 0 0 0;
+                        position: relative;
+                        h3{
+                            color: #bbb;
+                            font-size: 28px;
+                            font-weight: 700; 
+                        }
+                        span{
+                            position: absolute;
+                            top: 50%;
+                            right: 0;
+                            transform: translateY(-50%);
+                            color: #5865f5;
+                            font-size: 14px;
+                            font-weight: 700; 
+                        }
+                    }
+                    .row3{
+                        margin: 24px 0 0 0;
+                        padding: 21px 0 0 0;
+                        border-top: 1px solid #ddd;
+                        h3{
+                            color: #222;
+                            font-size: 16px;
+                            font-weight: 700;
+                        }
+                        .sale{
+                            span{}
+                        }
+                    }
+                    .row4{
+                        margin: 24px 0 0 0;
+                        padding: 21px 0 0 0;
+                        border-top: 1px solid #ddd;
+                        display: flex;
+                        justify-content: space-between;
+                        h3{
+                            color: #222;
+                            font-size: 16px;
+                            font-weight: 700;
+                        }
+                        .radio-box{
+                            display: flex;
+                            li{
+                                input{}
+                                span{
+                                    display: block;
+                                    font-size: 11px;
+                                    color: #222;
+                                }
+                            }
+                        }
+                    }
+                    .row5{
+                        margin: 24px 0 0 0;
+                        padding: 21px 0 0 0;
+                        border-top: 1px solid #ddd;
+                        h3{
+                            color: #222;
+                            font-size: 16px;
+                            font-weight: 700;
+                        }
+                        select{
+                            margin: 15px 0 0 0;
+                            width: 100%;
+                            height: 50px;
+                            padding: 13px 17px;
+                            option{}
+                        }
+                    }
+                    .row6{
+                        margin: 24px 0 0 0;
+                        padding: 30px 0 0 0;
+                        border-top: 2px solid #000;
+                        display: flex;
+                        justify-content: space-between;
+                        h3{
+                            color: #222;
+                            font-size: 16px;
+                            font-weight: 700;
+                        }
+                    }
+                    .row7{
+                        margin: 65px 0 0 0;
+                        ul{
+                            display: flex;
+                            li{
+                                margin: 0 8px 0 0;
+                                button{
+                                    width: 64px;
+                                    height: 64px;
+                                    background: none;
+                                    border-width: 1px;
+                                }
+                                &:nth-child(4){
+                                    margin: 0;
+                                    button{
+                                        width: 337px;
+                                        background: #ddd;
+                                        color: #fff;
+                                        border: 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+#detailSection2{
+    width: 100%;
+    .container{
+        .gap{
+            .content{}
+        }
+    }
+}
+#detailSection3{
+    width: 100%;
+    .container{
+        .gap{
+            .content{}
+        }
+    }
+}
+#detailSection4{
+    width: 100%;
+    .container{
+        .gap{
+            .content{}
+        }
+    }
+}
+#detailSection5{
+    width: 100%;
+    .container{
+        .gap{
+            .content{}
+        }
+    }
+}

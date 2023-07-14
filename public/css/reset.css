@@ -59,6 +59,7 @@ i, em, address {
 }
 
 .blind {
+  height: 0;
   display: inline-block;
   text-indent: -10000px;
   overflow: hidden;

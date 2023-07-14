@@ -3,7 +3,7 @@ import CameraSection1Component from './camera/CameraSection1Component';
 import CameraSection2Component from './camera/CameraSection2Component';
 import axios from 'axios';
 
-export default function CameraComponent(props) {
+export default function CameraComponent({setViewProductDetail, dkey}) {
 
     const [state, setState] = React.useState({
         카메라: [],
@@ -34,7 +34,7 @@ export default function CameraComponent(props) {
     return (
         <main id='camera'>
             <CameraSection1Component/>
-            <CameraSection2Component 카메라={state.카메라} n={state.n}/>
+            <CameraSection2Component 카메라={state.카메라} n={state.n} setViewProductDetail={setViewProductDetail} dkey={dkey}/>
         </main>
     );
 }

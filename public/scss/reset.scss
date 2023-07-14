@@ -10,5 +10,5 @@ a:visited {text-decoration:none;color:#fff;}
 a:focus {text-decoration:none;color:#fff;}
 h1,h2,h3,h4,h5,h6,b,strong {font-weight: normal;}
 i, em, address {font-style: normal;}
-.blind {display:inline-block;text-indent:-10000px;overflow:hidden;}
+.blind {height:0;display:inline-block;text-indent:-10000px;overflow:hidden;}
 .hide {display: none;}

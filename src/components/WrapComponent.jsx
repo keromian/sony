@@ -11,6 +11,7 @@ import SignupComponent from './wrap/SignupComponent';
 import AgreeComponent from './wrap/signup/AgreeComponent';
 import InfoComponent from './wrap/signup/info/InfoComponent';
 import SigninComponent from './wrap/SigninComponent';
+import ProductDetailComponent from './wrap/ProductDetailComponent';
 
 export default function WrapComponent() {
 
@@ -46,8 +47,45 @@ export default function WrapComponent() {
         }
         
     },[userId, expires, signinKey]);
-    
 
+    const [productDetail, setProductDetail] = React.useState({
+        dkey: 'PRODUCTDETAILKEY',
+        sign: false,
+        getProductDetail : [],
+        cartKey:'ABCMARTCART',
+    });
+
+    // 비구조화
+    const {dkey, sign, getProductDetail, cartKey} = productDetail;
+
+    const setViewProductDetail=(value)=>{
+        let arr = [];
+        console.log('value  ' +value);
+        if(localStorage.getItem(dkey)!==null){
+
+            arr = JSON.parse(localStorage.getItem(dkey));
+            arr = [value, ...arr]
+            localStorage.setItem(dkey, JSON.stringify(arr));
+            setProductDetail({
+                ...productDetail,
+                sign: !sign,
+                getProductDetail: arr
+            });
+        }
+        else{
+            arr = [value]
+            localStorage.setItem(dkey, JSON.stringify(arr));
+            setProductDetail({
+                ...productDetail,
+                sign: !sign,
+                getProductDetail: arr
+            });
+        }
+      
+    }
+
+    
+    
 
 
     return (
@@ -59,9 +97,13 @@ export default function WrapComponent() {
                         <Route path='MAIN' element={<IntroComponent/>}/>
 
                         {/* 카메라 */}
-                        <Route path='CAMERA' element={<CameraComponent/>}/>
-                        <Route path='LENS' element={<LensComponent/>}/>
-                        <Route path='COMPACT' element={<CompactComponent/>}/>
+                        <Route path='CAMERA' element={<CameraComponent setViewProductDetail={setViewProductDetail} dkey={dkey}/>}/>
+                        <Route path='LENS' element={<LensComponent setViewProductDetail={setViewProductDetail} dkey={dkey}/>}/>
+                        <Route path='COMPACT' element={<CompactComponent setViewProductDetail={setViewProductDetail} dkey={dkey}/>}/>
+
+                        {/* 제품상세페이지 */}
+                        <Route path='DETAIL' element={<ProductDetailComponent dkey={dkey}/>}/>
+                        
 
                         {/* 공지사항 */}
                         <Route path='SERVICE' element={<ServiceComponent loginId={loginId}/>}/>
