@@ -2,26 +2,21 @@ import React from 'react';
 import axios from 'axios';
 import './scss/noticeUpdate.scss';
 
-export default function UpdateComponent({setData}) {
-    const [state, setState] = React.useState({
-        subject:'',
-        content:''
-        
-    });
-    const {subject, content} = state;
+export default function UpdateComponent({setData, item, setItem}) {
+    
 
    
 
     const onChangeSubject=(e)=>{
-        setState({
-            ...state,
-            subject: e.target.value,
+        setItem({
+            ...item,
+            제목: e.target.value,
         })
     }
     const onChangeContents=(e)=>{
-        setState({
-            ...state,
-            content: e.target.value,
+        setItem({
+            ...item,
+            내용: e.target.value,
         })
     }
 
@@ -29,12 +24,13 @@ export default function UpdateComponent({setData}) {
         e.preventDefault();
        
         axios({
-            url:'/bbs/writeAction.jsp',
+            url:'/bbs/updateAction.jsp',
             method: 'POST',
             data:{},
             params: {
-                "subject": subject,
-                "content": content
+                "subject": item.제목,
+                "content": item.내용,
+                "bbsId":item.번호
             }
         })
         .then((res)=>{
@@ -42,7 +38,7 @@ export default function UpdateComponent({setData}) {
     
             console.log( res );
             console.log( res.data );
-            setData('공지사항');
+            setData('글보기');
         
 
         })
@@ -66,7 +62,7 @@ export default function UpdateComponent({setData}) {
                                     type="text" 
                                     name='subject' 
                                     id='subject' 
-                                    value={subject} 
+                                    value={item.제목} 
                                     placeholder='제목을 입력해 주세요' 
                                     autoComplete='off'
                                     />
@@ -80,7 +76,7 @@ export default function UpdateComponent({setData}) {
                                     name="content" 
                                     id="content"  
                                     placeholder='내용을 입력해 주세요' 
-                                    value={content}
+                                    value={item.내용}
                                     ></textarea>
                         </label>
                     </li>

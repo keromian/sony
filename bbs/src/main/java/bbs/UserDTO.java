@@ -4,7 +4,9 @@ public class UserDTO {
     private String userId;
     private String userPw;
     private String userName;
-    private String userEmail;
+    private String userBirth;
+    private String userGender;
+    private String userHp;
     
 	public String getUserId() {
 		return userId;
@@ -24,10 +26,22 @@ public class UserDTO {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public String getUserEmail() {
-		return userEmail;
+	public String getUserBirth() {
+		return userBirth;
 	}
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
+	public void setUserBirth(String userBirth) {
+		this.userBirth = userBirth;
+	}
+	public String getUserGender() {
+		return userGender;
+	}
+	public void setUserGender(String userGender) {
+		this.userGender = userGender;
+	}
+	public String getUserHp() {
+		return userHp;
+	}
+	public void setUserHp(String userHp) {
+		this.userHp = userHp;
 	}
 }

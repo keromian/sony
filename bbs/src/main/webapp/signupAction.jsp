@@ -11,7 +11,9 @@
 <jsp:setProperty name="UserDTO" property="userId"/>
 <jsp:setProperty name="UserDTO" property="userPw"/>
 <jsp:setProperty name="UserDTO" property="userName"/>
-<jsp:setProperty name="UserDTO" property="userEmail"/>
+<jsp:setProperty name="UserDTO" property="userBirth"/>
+<jsp:setProperty name="UserDTO" property="userGender"/>
+<jsp:setProperty name="UserDTO" property="userHp"/>
 
     
 <!DOCTYPE html>

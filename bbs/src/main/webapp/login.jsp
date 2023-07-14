@@ -53,7 +53,7 @@ if(session.getAttribute("userId")!=null){ // 세션값이 비어있지 않으면
 		<div class="content">
 		    <form name="loginForm" autocomplete="off" id="loginForm" method="post" action="./loginAction.jsp">
 		        <ul>
-		            <li><input  maxlength="16" type="text" name="userId" id="userId" placeholder="아이디를 입력하세요"></li>
+		            <li><input  maxlength="30" type="text" name="userId" id="userId" placeholder="아이디를 입력하세요"></li>
 		            <li><input maxlength="16" type="text" name="userPw" id="userPw" placeholder="비밀번호를 입력하세요"></li>
 		        </ul>
 		        <div class='search-box'>

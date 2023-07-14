@@ -6,9 +6,10 @@ import ViewComponent from './service/notice/ViewComponent';
 import WriteComponent from './service/notice/WriteComponent';
 import UpdateComponent from './service/notice/UpdateComponent';
 
-export default function ServiceComponent(props) {
+export default function ServiceComponent({loginId}) {
 
     const [data, setData] = React.useState('공지사항');
+    const [item, setItem] = React.useState([]);
 
     const onClickMenu =(value)=>{
         setData(value);
@@ -67,10 +68,10 @@ export default function ServiceComponent(props) {
     return (
         <main id='main'>
             <ServiceSection1 data={data} onClickMenu={onClickMenu} />
-            {(data==='공지사항' || data==='FAQ') && <ServiceSection2 FAQ={state.FAQ} data={data} notice={notice} setData={setData}/>}
-            {data==='글보기' && <ViewComponent setData={setData}/>}
+            {(data==='공지사항' || data==='FAQ') && <ServiceSection2 setItem={setItem} FAQ={state.FAQ} data={data} notice={notice} setData={setData} loginId={loginId}/>}
+            {data==='글보기' && <ViewComponent setData={setData} item={item}/>}
             {data==='글작성' && <WriteComponent setData={setData}/>}
-            {data==='수정' && <UpdateComponent setData={setData}/>}            
+            {data==='수정' && <UpdateComponent setData={setData} setItem={setItem} item={item}/>}            
         </main>
     );
 }

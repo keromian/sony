@@ -2,7 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import { Link , Outlet } from 'react-router-dom';
 
-export default function HeaderComponent() {
+export default function HeaderComponent({loginId, signinKey}) {
     React.useEffect(()=>{
         let newScroll = $(window).scrollTop();  
             let oldScroll = newScroll;             
@@ -101,9 +101,10 @@ export default function HeaderComponent() {
         })
     })
 
-    const onClickSign=(e)=>{
+    const onClickLogOut=(e)=>{
         e.preventDefault();
-        window.location.pathname='/SIGNIN';
+        localStorage.removeItem(signinKey); // 로그인 정보 모두 삭제
+        window.location.reload();
     }
 
 
@@ -137,9 +138,10 @@ export default function HeaderComponent() {
                                         <a className='sign' href='!#'><img src="./img/header/mypage.svg" alt="" /></a>
                                         <div className='mypage_inner'>
                                             <ul>
-                                                <li><a href="!#">로그인</a></li>                                                
-                                                <li><a onClick={onClickSign} href="!#" >회원가입</a></li>
-                                                <li><a href="!#">주문/배송 조회</a></li>                                                
+                                                {loginId==='' && <li><Link to="/SIGNIN">로그인</Link></li> }
+                                                {loginId!=='' && <li><a onClick={onClickLogOut} href='!#'>로그아웃</a></li> }
+                                                <li><Link to="/SIGNUP" >회원가입</Link></li>
+                                                <li><a  href="!#">주문/배송 조회</a></li>                                                
                                             </ul>
                                         </div>
                                     </li>

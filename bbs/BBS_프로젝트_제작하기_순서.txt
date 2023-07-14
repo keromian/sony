@@ -1,11 +1,12 @@
 [1] 데이터베이스 이름 BBS
 - user 테이블
 
-create table user (
+create table sonyuser (
     userId      VARCHAR(16) NOT NULL,
     userPw      VARCHAR(16) NOT NULL,
     userName    VARCHAR(30) NOT NULL,
-    userEmail   VARCHAR(250),
+    userBirth    VARCHAR(8) NOT NULL,
+    userHp   VARCHAR(11) NOT NULL,
     PRIMARY KEY(userId)
 );
 

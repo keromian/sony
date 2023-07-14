@@ -1,6 +1,7 @@
 import React from 'react';
 import './scss/info.scss';
 import $ from 'jquery';
+import axios from 'axios';
 
 export default function InfoComponent({membership}) {
     const [state, setState] = React.useState(membership);
@@ -103,8 +104,6 @@ export default function InfoComponent({membership}) {
         const regExp4 = /(\d)\1\1/g;
         const regExp5 = /(.)\1\1/g;        
 
-        console.log(value);
-        console.log(state.비밀번호);
 
 
         if(regExp1.test(value)===false || regExp2.test(value)===false || regExp3.test(value)===true){
@@ -238,6 +237,39 @@ export default function InfoComponent({membership}) {
         })
     }
 
+    
+
+    const onSubmitAction=(e)=>{
+        e.preventDefault();
+        console.log(state.아이디);
+        axios({
+            url:'/bbs/signupAction.jsp',
+            method: 'POST',
+            data:{},
+            params: {
+                "userId": state.아이디,
+                "userPw": state.비밀번호,
+                "userName": state.이름,
+                "userBirth": state.생년월일,
+                "userHp": state.휴대폰,
+                "userGender": state.성별
+
+            }
+        })
+        .then((res)=>{
+    
+            console.log( res );
+            console.log( res.data );
+            window.location.pathname='/MAIN';
+        
+
+        })
+        .catch((err)=>{
+            console.log(`AXIOS 실패! ${err} `)
+        }); 
+
+    }
+
 
     return (
         <main id='info'>
@@ -248,11 +280,11 @@ export default function InfoComponent({membership}) {
                         <p>소니코리아 통합 웹회원 정책 상 공식적으로<strong>만 14세 미만의 경우 회원가입이 불가합니다.</strong></p>
                     </div>
                     <div className="content">
-                        <form action="">
+                        <form onSubmit={onSubmitAction} action="">
                             <ul>
                                 <li  className='inputs'>
-                                    <label htmlFor="">
-                                        <input onChange={onChangeUserId} type="text" value={state.아이디}/>
+                                    <label htmlFor="userId">
+                                        <input onChange={onChangeUserId} name='userId' id='userId' type="text" value={state.아이디}/>
                                         <span className={`spans${state.아이디===''?'':' on'}`}>
                                             이메일 아이디
                                             <em>(예:sony@sony.co.kr)</em>
@@ -260,8 +292,8 @@ export default function InfoComponent({membership}) {
                                     </label>                                    
                                 </li>
                                 <li className='inputs'>
-                                    <label htmlFor="">
-                                        <input type="password" onChange={onChangeUserPw} value={state.비밀번호}/>
+                                    <label htmlFor="userPw">
+                                        <input type="password" onChange={onChangeUserPw} name='userPw' id='userPw' value={state.비밀번호}/>
                                         <span className={`spans${state.비밀번호===''?'':' on'}`}>
                                             비밀번호
                                             <em>(대/소문자, 숫자, 특수문자 3종 포함 12~15자리 미만)</em>
@@ -269,16 +301,16 @@ export default function InfoComponent({membership}) {
                                     </label>                                    
                                 </li>
                                 <li className='inputs'>
-                                    <label htmlFor="">
-                                        <input type="password" onChange={onChangeUserPwConfirm} value={state.비밀번호확인}/>
+                                    <label htmlFor="userPw2">
+                                        <input type="password" onChange={onChangeUserPwConfirm} name='userPw2' id='userPw2' value={state.비밀번호확인}/>
                                         <span className={`spans${state.비밀번호확인===''?'':' on'}`}>
                                             비밀번호 확인                                            
                                         </span>    
                                     </label>                                    
                                 </li>
                                 <li className='inputs'>
-                                    <label htmlFor="">
-                                        <input type="text" onChange={onChangeUserName} value={state.이름}/>
+                                    <label htmlFor="userName">
+                                        <input type="text" onChange={onChangeUserName} name='userName' id='userName' value={state.이름}/>
                                         <span className={`spans${state.이름===''?'':' on'}`}>
                                             이름
                                             <em>(띄어쓰기 없이 입력하세요.)</em>
@@ -286,8 +318,8 @@ export default function InfoComponent({membership}) {
                                     </label>  
                                     </li>                                  
                                     <li className='inputs'>
-                                    <label htmlFor="">
-                                        <input type="text" maxLength={8} onChange={onChangeBirth} value={state.생년월일}/>
+                                    <label htmlFor="userBirth">
+                                        <input type="text" maxLength={8} onChange={onChangeBirth} name='userBirth' id='userBirth' value={state.생년월일}/>
                                         <span className={`spans${state.생년월일===''?'':' on'}`}>
                                             생년월일
                                             <em>(예:20210307)</em>
@@ -296,10 +328,10 @@ export default function InfoComponent({membership}) {
                                 </li>
                                 
                                 <li>
-                                    <label htmlFor="gender">
-                                        <input onChange={onChangeGender} type="radio" name='gender' value={'여성'} checked={state.성별.includes('여성')}/>
+                                    <label htmlFor="userGender">
+                                        <input onChange={onChangeGender} type="radio" name='userGender' id='female' value={'여성'} checked={state.성별.includes('여성')}/>
                                         여성                                            
-                                        <input onChange={onChangeGender} type="radio" name='gender' value={'남성'} checked={state.성별.includes('남성')}/>
+                                        <input onChange={onChangeGender} type="radio" name='userGender' id='male' value={'남성'} checked={state.성별.includes('남성')}/>
                                         남성
                                         <span>
                                             성별
@@ -307,8 +339,8 @@ export default function InfoComponent({membership}) {
                                     </label>                                    
                                 </li>
                                 <li className='inputs'>
-                                    <label htmlFor="">
-                                        <input type="text" onChange={onChangeHp} value={state.휴대폰} />
+                                    <label htmlFor="userHp">
+                                        <input type="text" onChange={onChangeHp} name='userHp' id='userHp' value={state.휴대폰} />
                                         <span className={`spans${state.휴대폰===''?'':' on'}`}>
                                             휴대폰 번호
                                             <em>(-없이 입력하세요)</em>

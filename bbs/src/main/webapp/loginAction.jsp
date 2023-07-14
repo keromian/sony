@@ -12,13 +12,7 @@
 <jsp:setProperty name='UserDTO'  property="userPw"/>
 
     
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+
 
 
 <%
@@ -40,6 +34,7 @@
 			// session.setAttribute("세션이름 키(아이디)", 세션값 키값(아이디)); //세션할당
 			session.setAttribute("userId", UserDTO.getUserId());
 %>			
+			
 			<script>
 				alert("로그인 되었습니다.");
 				location.href="./bbsListAction.jsp";
@@ -49,31 +44,24 @@
 		}		
 		else if(result==0){
 %>
-
-			<script>			
-				alert("비밀번호가 틀렸습니다. 확인하고 다시시도하세요");
-				history.go(-1);
-			</script>
+			
+			{"result":<%= result %>}
+			
 			
 <%			
 		}		
 		else if(result==-1){
+			
 %>		
-	
-			<script>
-				alert("아이디가 틀렸습니다. 확인하고 다시시도하세요");
-				history.go(-1);
-			</script>
+			
+		{"result":<%= result %>}
 						
 <%			
 		}		
 		else {
 %>		
 
-		<script>				
-			alert("데이터베이스를 전체를 확인하고 다시시도하세요");
-			history.go(-1);
-		</script>
+		{"result":<%= result %>}
 		
 <%			
 		}
@@ -81,7 +69,4 @@
 		
 	}
 %>
-%>
 
-</body>
-</html>

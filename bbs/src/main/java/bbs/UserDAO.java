@@ -29,13 +29,15 @@ public class UserDAO {
 			// 관리자 회원가입
 			public int signup(UserDTO userDTO) {
 				// SQL INSERT INTO user
-				String SQL = "INSERT INTO user(userId, userPw, userName, userEmail)  VALUES(?, ?, ?, ?)";
+				String SQL = "INSERT INTO sonyuser(userId, userPw, userName, userBirth, userHp, userGender)  VALUES(?, ?, ?, ?, ?, ?)";
 				try {
 					PreparedStatement ps = conn.prepareStatement(SQL);
 					ps.setString(1, userDTO.getUserId());
 					ps.setString(2, userDTO.getUserPw());
 					ps.setString(3, userDTO.getUserName());
-					ps.setString(4, userDTO.getUserEmail());
+					ps.setString(4, userDTO.getUserBirth());
+					ps.setString(5, userDTO.getUserHp());
+					ps.setString(6, userDTO.getUserGender());
 					return ps.executeUpdate();
 				} catch (Exception e) {
 					// TODO: handle exception
@@ -56,7 +58,7 @@ public class UserDAO {
 			// 아이디 입력값 받아서 비교하고 
 			// 아이디가 맞으면 그다음 비밀번호를 비교한다. 그리고 로그인 구현
 			public int login(String userId, String userPw) {
-				String SQL = "SELECT userPw FROM user WHERE userId = ?";
+				String SQL = "SELECT userPw FROM sonyuser WHERE userId = ?";
 				try {
 					PreparedStatement ps = conn.prepareStatement(SQL);
 					ps.setString(1, userId);
@@ -80,15 +82,15 @@ public class UserDAO {
 			// 아이디찾기 메서드
 			// 1차 검색 이름
 			// 1차 검색 결과를 이용하여 반복문 WHILE 사용 이메일을 검색 			
-			public UserDTO idSearch(String userName, String userEmail){
-				String SQL = "SELECT userEmail, userId  FROM user WHERE userName = ?";
+			public UserDTO idSearch(String userName, String userHp){
+				String SQL = "SELECT userHp, userId  FROM sonyuser WHERE userName = ?";
 				try {
 					PreparedStatement ps = conn.prepareStatement(SQL);	
 					ps.setString(1, userName);
 					rs = ps.executeQuery();
 					while(rs.next()) {
 						// userEmail 비교
-						if(rs.getString(1).equals(userEmail)) {
+						if(rs.getString(1).equals(userHp)) {
 							UserDTO userDTO = new UserDTO();
 							// 이메일이 일하면 검색 정보 아이디를 반환한다.
 							userDTO.setUserId(rs.getString(2)); //SQL 조회딘 아이디를 반환
@@ -105,15 +107,15 @@ public class UserDAO {
 			// 비밀번호찾기 메서드
 			// 1차 검색 아이디
 			// 1차 검색 결과를 이용하여 반복문 WHILE 사용 이메일을 검색 			
-			public UserDTO pwSearch(String userId, String userEmail){
-				String SQL = "SELECT userEmail, userPw  FROM user WHERE userId = ?";
+			public UserDTO pwSearch(String userId, String userHp){
+				String SQL = "SELECT userHp, userPw  FROM sonyuser WHERE userId = ?";
 				try {
 					PreparedStatement ps = conn.prepareStatement(SQL);	
 					ps.setString(1, userId);
 					rs = ps.executeQuery();
 					while(rs.next()) {
 						// userEmail 비교
-						if(rs.getString(1).equals(userEmail)) {
+						if(rs.getString(1).equals(userHp)) {
 							UserDTO userDTO = new UserDTO();
 							// 이메일이 일하면 검색 정보 비밀번호를 반환한다.
 							userDTO.setUserPw(rs.getString(2)); //SQL 조회딘 비밀번호를 반환

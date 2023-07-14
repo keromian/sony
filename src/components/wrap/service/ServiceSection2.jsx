@@ -2,8 +2,9 @@ import React from 'react';
 import './scss/ServiceSection2.scss'
 import $ from 'jquery';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-export default function ServiceSection2({FAQ,  notice, data, setData}) {
+export default function ServiceSection2({FAQ,  notice, data, setData, setItem, loginId}) {
 
     const [sortOrder, setSortOrder] =React.useState('전체');
     const [sortData, setSortData] =React.useState(FAQ);
@@ -118,9 +119,31 @@ export default function ServiceSection2({FAQ,  notice, data, setData}) {
         setFaqList(9)
     }
     
-    const onClickView=(e,value)=>{
+    const onClickView=(e,item)=>{
         e.preventDefault();
-        setData(value);
+        setItem(item)
+        axios({
+            url:'/bbs/viewAction.jsp',
+            method: 'POST',
+            data:{},
+            params: {
+                "subject": item.제목,
+                "content": item.내용,
+                "bbsId":item.번호
+            }
+        })
+        .then((res)=>{
+    
+    
+            console.log( res );
+            console.log( res.data );
+            setData('글보기');
+        
+
+        })
+        .catch((err)=>{
+            console.log(`AXIOS 실패! ${err} `)
+        }); 
     }
 
     return (
@@ -201,7 +224,7 @@ export default function ServiceSection2({FAQ,  notice, data, setData}) {
                                 notice.map((item,idx)=>{
                                     if( Math.ceil((idx+1)/list) === pageNumber ){
                                     return(
-                                        <a href='!#' onClick={(e)=>onClickView(e,'글보기')}  key={idx}>
+                                        <a href='!#' onClick={(e)=>onClickView(e,item)}  key={idx}>
                                             <dd>
                                                 <span>{item.번호}</span>
                                                 <span>{item.제목}</span>
@@ -238,7 +261,7 @@ export default function ServiceSection2({FAQ,  notice, data, setData}) {
                                 </div> 
                             </div> 
                             <div className='write-btn'>
-                                <button onClick={()=>setData('글작성')}>글작성</button>
+                                {loginId!=='' && <button onClick={()=>setData('글작성')}>글작성</button>}
                             </div>
                         </div>
                     </div>

@@ -11,6 +11,7 @@ export default function AgreeComponent(props) {
     }
 
     const [req, setReq] = React.useState(false);
+    const [btnOn, setBtnOn] = React.useState(false);
     const [consent, setConsent]=React.useState({
         chk1:false,
         chk2:false,
@@ -56,6 +57,20 @@ export default function AgreeComponent(props) {
         }
         
     }
+
+    React.useEffect(()=>{
+        if(consent.chk1 && consent.chk2 &&consent.chk3 &&consent.chk4 &&consent.chk5 &&consent.chk6){
+            setReq(true)
+            setBtnOn(true)
+        }
+        else if(consent.chk1 && consent.chk2 &&consent.chk3 &&consent.chk4){
+            setBtnOn(true)
+        }
+        else{
+            setReq(false)
+            setBtnOn(false)
+        }
+    },[consent])
 
 
     return (
@@ -144,7 +159,7 @@ export default function AgreeComponent(props) {
                                     </li>
                                 </ul>
                                 <div className="btn-box">
-                                    <button className={`${req?'on':''}`} onClick={onClickNext}>동의</button>
+                                    <button className={btnOn?'on':''} onClick={onClickNext}>동의</button>
                                 </div>
                             </form>
                         </div>
