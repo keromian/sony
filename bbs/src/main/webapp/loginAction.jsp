@@ -45,7 +45,7 @@
 		else if(result==0){
 %>
 			
-			{"result":<%= result %>}
+		{"result":<%= result %>}
 			
 			
 <%			
