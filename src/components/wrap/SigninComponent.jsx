@@ -89,10 +89,7 @@ export default function SigninComponent({setSigin}) {
                         })
                         alert('로그인이 되었습니다.');
                         
-                        window.history.go(-1);
-                        setTimeout(function(){
-                            window.location.reload();
-                        }, 100);
+                        window.location.pathname='/MAIN'
                         // window.location.reload();
                         // window.location.pathname='/MAIN'
 

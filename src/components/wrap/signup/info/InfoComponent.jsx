@@ -260,7 +260,28 @@ export default function InfoComponent({membership}) {
     
             console.log( res );
             console.log( res.data );
-            window.location.pathname='/MAIN';
+            // window.location.pathname='/MAIN';
+
+            if(res.status===200){
+                const result =res.data.result;
+                console.log( res.data.result );
+                try {                    
+                    if( result === -1 ){
+                        alert('가입오류 이미 입력된 아이디 입니다.');                                  
+                    }
+                    else if( result === 0 ){
+                        alert('아이디, 비밀번호, 이름은 필수 입력사항입니다.');                        
+                    }
+                    else{
+                        
+                        alert('회원가입을 축하드립니다.'); 
+                        window.location.pathname='/MAIN'
+
+                    }
+                } catch (error) {
+                    console.log( error );
+                }
+            }
         
 
         })

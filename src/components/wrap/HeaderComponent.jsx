@@ -33,12 +33,12 @@ export default function HeaderComponent({loginId, signinKey}) {
     React.useEffect(()=>{
         const headerRow2 = $('.header-row2');
         const headerRow2Ul = $('.header-row2 ul');
-        const navLi = $('.nav li');
+        const navLi = $('#header .nav li');
         const headerRow2Li = $('.header-row2 li');
         const header = $('#header');
         const logo = $('.header-left a');
-        const sign = $('.sign');
-        const mypageIn = $('.mypage_inner');
+        const sign = $('#header .sign');
+        const mypageIn = $('#header .mypage_inner');
 
         sign.on({
             click(e){

@@ -63,10 +63,7 @@ else {  // 1. 로그인 성공한 회원만 글을 쓸수있도록 제한 조건
 					// 작성자와 글 데이터정보 비교  글번호==본인글번호 작성자 아이디 본인아이디
 					if(!userId.equals(bbsDTO.getUserId())){ // 지금 수정할 글번호의 작성자가 아니면
 					%>
-						<script>
-							alert("수정할 권한이 없습니다."); // 작성자 본인만이 수정 가능하다.
-							location.href='./bbsListAction.jsp';
-						</script>
+						{"result":<%= userId.equals(bbsDTO.getUserId()) %>}
 					<%		
 					}
 					else{ // 작성자 본인 글이면 그런 수정를 할 수있다.
@@ -77,10 +74,7 @@ else {  // 1. 로그인 성공한 회원만 글을 쓸수있도록 제한 조건
 						
 						if(result==-1){ // 데이터베이스 오류 (글 수정 오류)
 						%>
-							<script>
-								alert("글 수정 실패했습니다.");
-								history.go(-1);
-							</script>
+							{"result": <%= result%>}
 						<%		
 						}
 						else{
@@ -96,7 +90,3 @@ else {  // 1. 로그인 성공한 회원만 글을 쓸수있도록 제한 조건
 		} // 수정할 글번호가 있는 경우의 조건 end		
 }  // 로그인이 된경우 end
 %>	
-
-
-</body>
-</html>

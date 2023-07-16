@@ -38,7 +38,25 @@ export default function UpdateComponent({setData, item, setItem}) {
     
             console.log( res );
             console.log( res.data );
-            setData('글보기');
+            
+            if(res.status===200){
+                const result =res.data.result;
+                try {                    
+                    if( result === false ){
+                        alert('본인이 작성한 글만 수정 할 수 있습니다.');                                                       
+                    }
+                    else if( result === -1 ){
+                        alert('글 수정 실패했습니다');                        
+                    }
+                    else{
+                        alert('글 수정 성공했습니다.');                        
+                        setData('글보기');              
+
+                    }
+                } catch (error) {
+                    console.log( error );
+                }
+            }
         
 
         })

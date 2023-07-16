@@ -12,6 +12,7 @@ import AgreeComponent from './wrap/signup/AgreeComponent';
 import InfoComponent from './wrap/signup/info/InfoComponent';
 import SigninComponent from './wrap/SigninComponent';
 import ProductDetailComponent from './wrap/ProductDetailComponent';
+import GoTopComponent from './wrap/GoTopComponent';
 
 export default function WrapComponent() {
 
@@ -121,6 +122,7 @@ export default function WrapComponent() {
             </BrowserRouter>
             
             <FooterComponent/>
+            <GoTopComponent/>
         </div>
     );
 };

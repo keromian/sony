@@ -29,8 +29,29 @@ export default function ViewComponent({setData, item}) {
             
             console.log( res );
             console.log( res.data );
+            if(res.status===200){
+                const result =res.data.result;
+                try {                    
+                    if( result === false ){
+                        alert('본인이 작성한 글만 삭제 할 수 있습니다.');                                                       
+                    }
+                    else if( result === true ){
+                        alert('삭제할 데이터가 없습니다.');                        
+                    }
+                    else if( result === -1 ){
+                        alert('글 삭제 실패했습니다');                        
+                    }
+                    else{
+                        alert('글 삭제 성공했습니다.');                        
+                        window.location.pathname='/SERVICE';                       
 
-            window.location.pathname='/SERVICE';
+                    }
+                } catch (error) {
+                    console.log( error );
+                }
+            }
+
+           
             // setMenu('글보기');
 
         })
