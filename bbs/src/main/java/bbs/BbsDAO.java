@@ -47,7 +47,7 @@ public class BbsDAO {
 			// 게시 글번호 다음 번호 생성
 			public int getNumber() {
 				//마지막글번호+1 
-				String SQL = "SELECT bbsId FROM bbs ORDER BY bbsId DESC";
+				String SQL = "SELECT bbsId FROM sonybbs ORDER BY bbsId DESC";
 				try {
 					PreparedStatement ps = conn.prepareStatement(SQL);
 					rs = ps.executeQuery();
@@ -66,7 +66,7 @@ public class BbsDAO {
 			
 			// 게시판 글쓰기(Write) 메서드
 			public int write(String userId, String subject, String content) {
-				String SQL = "INSERT INTO bbs VALUES(?, ?, ?, ?, ?, ?, ?)";	
+				String SQL = "INSERT INTO sonybbs VALUES(?, ?, ?, ?, ?, ?, ?)";	
 				
 				try {
 					PreparedStatement ps = conn.prepareStatement(SQL);
@@ -92,7 +92,7 @@ public class BbsDAO {
 			public ArrayList<BbsDTO> getList(int pageNumber){
 //				String SQL = "SELECT * FROM (SELECT *, @no := @no + 1 as no FROM bbs, (SELECT @no:=0) as v_format_no  WHERE deleteOk=1) as v_table WHERE no <=? ORDER BY bbsId DESC LIMIT ?";  
 				String SQL = "SELECT * FROM "
-						   + "(SELECT *, @no := @no + 1 as no FROM bbs, "
+						   + "(SELECT *, @no := @no + 1 as no FROM sonybbs, "
 						   + "(SELECT @no:=0) as v_format_no  WHERE deleteOk=1) as v_table "
 						   + "WHERE no <=? ORDER BY bbsId DESC LIMIT ?";  
 				ArrayList<BbsDTO> list = new ArrayList<BbsDTO>();	
@@ -125,7 +125,7 @@ public class BbsDAO {
 			public boolean nextPage(int pageNumber) {
 //				String SQL = "SELECT * FROM bbs WHERE bbsId < ? AND deleteOk=1 ORDER BY bbsId DESC LIMIT ?";
 				String SQL = "SELECT * FROM "
-						   + "(SELECT *, @no := @no + 1 as no FROM bbs, "
+						   + "(SELECT *, @no := @no + 1 as no FROM sonybbs, "
 						   + "(SELECT @no:=0) as v_format_no  WHERE deleteOk=1) as v_table "
 						   + "WHERE no <=? ORDER BY bbsId DESC LIMIT ?";
 				try {
@@ -145,7 +145,7 @@ public class BbsDAO {
 			
 			// 전체레코드수 카운트 함수
 			public int totalRecordsMethod() {				
-				String SQL = "SELECT COUNT(bbsId) FROM bbs WHERE deleteOk = 1";			
+				String SQL = "SELECT COUNT(bbsId) FROM sonybbs WHERE deleteOk = 1";			
 				try {
 					PreparedStatement ps = conn.prepareStatement(SQL);					
 					rs = ps.executeQuery();
@@ -164,7 +164,7 @@ public class BbsDAO {
 			// 조회수(hit)증가(카운트)하는함수(bbsId)
 			public int hitCount(int bbsId) {
 				// SQL 조회수 증가 업데이트 조회수 1증가
-				String SQL = "UPDATE bbs SET hit = hit + 1 WHERE deleteOk = 1 AND bbsId = ?";
+				String SQL = "UPDATE sonybbs SET hit = hit + 1 WHERE deleteOk = 1 AND bbsId = ?";
 				try {
 					PreparedStatement ps = conn.prepareStatement(SQL);
 					ps.setInt(1, bbsId);
@@ -180,7 +180,7 @@ public class BbsDAO {
 			// 글보기 하나의 글목록 내용을 리턴
 			// 존재하지 않는 번호는 리턴값 null 이 반환된다.			
 			public BbsDTO getView(int bbsId) {
-				String SQL = "SELECT * FROM bbs WHERE deleteOk=1 AND bbsId = ?";
+				String SQL = "SELECT * FROM sonybbs WHERE deleteOk=1 AND bbsId = ?";
 				try {
 					PreparedStatement ps = conn.prepareStatement(SQL);
 					ps.setInt(1, bbsId);
@@ -212,7 +212,7 @@ public class BbsDAO {
 			public int delete(int bbsId) {
 				// 본인 글 작성자 일치 그리고 글번호 일치 그러면 삭제
 				// String SQL = "DELETE FROM bbs WHERE bbsId = ?  AND userId = ?";
-				String SQL = "UPDATE bbs SET deleteOk=0 WHERE bbsId = ?";
+				String SQL = "UPDATE sonybbs SET deleteOk=0 WHERE bbsId = ?";
 				try {
 					PreparedStatement ps = conn.prepareStatement(SQL);
 					ps.setInt(1, bbsId);
@@ -227,7 +227,7 @@ public class BbsDAO {
 			
 			
 			public int update(int bbsId, String subject, String content) {
-				String SQL = "UPDATE bbs SET subject=?, content=?, writeDate=?  WHERE bbsId = ?";
+				String SQL = "UPDATE sonybbs SET subject=?, content=?, writeDate=?  WHERE bbsId = ?";
 				try {
 					PreparedStatement ps = conn.prepareStatement(SQL);
 					ps.setString(1, subject);
